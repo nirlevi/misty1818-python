@@ -1,6 +1,6 @@
-# My MISTY1818 Python App with FastAPI
+# My MISTY1818 Python App with Flask
 
-This application is built using FastAPI. Follow the instructions below to set up the environment and run the application.
+This application is built using Flask. Follow the instructions below to set up the environment and run the application.
 
 ## Prerequisites
 
@@ -8,6 +8,10 @@ This application is built using FastAPI. Follow the instructions below to set up
 
   ```bash
   sudo apt install python3.10.9
+  mkdir misty1818
+  cd misty1818
+  python3 -m venv .venv
+  . .venv/bin/activate
   ```
 
 ## Installation
@@ -15,8 +19,7 @@ This application is built using FastAPI. Follow the instructions below to set up
 To install the required packages, run the following commands:
 
 ```bash
-python -m pip install fastapi
-python -m pip install uvicorn
+python -m pip install Flask
 python -m pip install requests
 python -m pip install python-dotenv
 ```
