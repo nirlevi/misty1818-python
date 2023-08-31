@@ -39,3 +39,8 @@ python app.py
 ## Important Note
 
 Please make sure to follow your provider's specific instructions on how to install and deploy Python apps with Flask.
+## For DigitalOcean Users
+
+If you are using DigitalOcean servers, please follow the guide available at the following link to set up your Flask and Python environment:
+
+[How to Create Your First Web Application Using Flask and Python 3 on DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-create-your-first-web-application-using-flask-and-python-3)
