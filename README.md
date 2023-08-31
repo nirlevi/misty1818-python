@@ -33,7 +33,7 @@ In the `index.html` file, locate line 98 and change the `http://127.0.0.1:5000` 
 To activate the app, you need to write the following command in the terminal:
 
 ```bash
-uvicorn main:app --reload
+python app.py
 ```
 
 ## Important Note
