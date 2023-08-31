@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Chatbot Interface</title>
+    <style>
+        #chat-box {
+            width: 500px;
+            height: 400px;
+            border: 1px solid #ccc;
+            overflow: auto;
+        }
+        .user-message, .bot-message {
+            margin: 10px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .user-message {
+            background-color: #f1f1f1;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #e6e6e6;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Simple Chatbot Interface</h1>
+
+    <div id="chat-box">
+        <!-- Messages will appear here -->
+    </div>
+
+    <textarea id="user-input" rows="4" cols="50"></textarea>
+    <button onclick="sendMessage()">Send</button>
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById("user-input").value;
+            const chatBox = document.getElementById("chat-box");
+
+            // Append user message to chat box
+            const userMessage = document.createElement("div");
+            userMessage.classList.add("user-message");
+            userMessage.textContent = userInput;
+            chatBox.appendChild(userMessage);
+
+            // Make an API request to your Flask backend
+            const response = await fetch('http://127.0.0.1:5000/mystic_numerology_evaluation', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "user_id": "some_user_id",
+                    "mystic_problem": userInput,
+                    "mystic_solution": "some_solution"
+                })
+            });
+
+            const data = await response.json();
+            const botResponse = data.mystic_evaluation;
+
+            // Append bot message to chat box
+            const botMessage = document.createElement("div");
+            botMessage.classList.add("bot-message");
+            botMessage.textContent = botResponse;
+            chatBox.appendChild(botMessage);
+
+            // Clear user input
+            document.getElementById("user-input").value = "";
+
+            // Scroll chat box to bottom
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+    </script><script>
+    // Define an asynchronous function called 'sendMessage'
+    async function sendMessage() {
+        // Get the user's message from the textarea
+        const userInput = document.getElementById("user-input").value;
+
+        // Reference the chat box div where messages will be displayed
+        const chatBox = document.getElementById("chat-box");
+
+        // Create a new div element to hold the user's message
+        const userMessage = document.createElement("div");
+        
+        // Add a CSS class to style the user's message
+        userMessage.classList.add("user-message");
+
+        // Set the text of the user's message
+        userMessage.textContent = userInput;
+
+        // Append the user's message to the chat box
+        chatBox.appendChild(userMessage);
+
+        // Make an asynchronous API request to the Flask backend
+        const response = await fetch('http://127.0.0.1:5000/mystic_numerology_evaluation', {
+            method: 'POST',  // Using POST method for the request
+            headers: {
+                'Content-Type': 'application/json'  // Indicate that we're sending JSON data
+            },
+            body: JSON.stringify({
+                "user_id": "some_user_id",  // Placeholder for user ID
+                "mystic_problem": userInput,  // User's question/problem
+                "mystic_solution": "some_so  // Placeholder for user's solution (if any)
+            })
+        });
+
+        // Parse the JSON response from the Flask API
+        const data = await response.json();
+
+        // Extract the bot's message from the API response
+        const botResponse = data.mystic_evaluation;
+        
+
+        // Create a new div element to hold the bot's message
+        const botMessage = document.createElement("div");
+
+        // Add a CSS class to style the bot's message
+        botMessage.classList.add("bot-message");
+
+        // Set the text of the bot's message
+        botMessage.textContent = botResponse;
+
+        // Append the bot's message to the chat box
+        chatBox.appendChild(botMessage);
+
+        // Clear the user input field
+        document.getElementById("user-input").value = "";
+
+        // Scroll the chat box to the bottom to display the newest message
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+</script>
+
+
+</body>
+</html>
